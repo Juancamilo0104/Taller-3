@@ -1,0 +1,16 @@
+## ESTADÍSTICAS DESCRIPTIVAS ESPACIALES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

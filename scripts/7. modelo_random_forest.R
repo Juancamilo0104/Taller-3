@@ -1,0 +1,10 @@
+## MODELO RANDOM FOREST
+
+
+
+
+
+
+
+
+
