@@ -24,7 +24,7 @@ skim(train)
 skim(test)
 
 
-
+# partir la base train en training y testiing, luego se evalúa dentro de muestra (sobre la de testing) y fuera de muestra (test)
 
 
 

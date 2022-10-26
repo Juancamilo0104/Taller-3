@@ -1,9 +1,0 @@
-## MODELO BAGGING
-
-
-
-
-
-
-
-

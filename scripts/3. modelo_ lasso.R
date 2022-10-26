@@ -1,5 +1,8 @@
 ## MODELO LASSO
 
+library(pacman)
+p_load(tidyverse, fastDummies, caret, glmnet, MLmetrics)
+
 library("dplyr") 
 library("caret")
 
@@ -7,7 +10,7 @@ set.seed(123)
 lambda <- 10^seq(-2, 3, length = 100)
 
 lasso <- train(modelo1, 
-               data = train, 
+               data = training, 
                method = "glmnet",
                trControl = trainControl("cv", number = 5),
                tuneGrid = expand.grid(alpha = 1, lambda=lambda), 
@@ -16,8 +19,22 @@ lasso <- train(modelo1,
 
 lasso
 
+# predicciones 
+
+testing$lasso <- predict(lasso,newdata = testing)
+with(testing,mean((price-lasso)^2))
+
 test$lasso <- predict(lasso,newdata = test)
 with(test,mean((price-lasso)^2))
+
+
+# predicción dentro de muestra (testing)
+pred_lasso_in <- predict(lasso , testing)
+
+# predicción fuera de muestra (en test)
+pred_lasso_out <- predict(lasso , test)
+
+
 
 # regularización lasso
 

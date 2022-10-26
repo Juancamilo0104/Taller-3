@@ -1,5 +1,8 @@
 ## MODELO RIDGE
 
+library(pacman)
+p_load(tidyverse, fastDummies, caret, glmnet, MLmetrics)
+
 library("dplyr") 
 library("caret")
 
@@ -7,7 +10,7 @@ set.seed(123)
 lambda <- 10^seq(-2, 3, length = 100)
 
 ridge <- train(modelo1, 
-               data = train, 
+               data = training, 
                method = "glmnet", 
                trControl = trainControl("cv", number = 5), 
                tuneGrid = expand.grid(alpha = 0,lambda=lambda), 
@@ -16,8 +19,21 @@ ridge <- train(modelo1,
 
 ridge
 
-test$lasso <- predict(ridge,newdata = test)
+# predicciones 
+
+testing$ridge <- predict(ridge,newdata = testing)
+with(testing,mean((price-ridge)^2))
+
+test$ridge <- predict(ridge,newdata = test)
 with(test,mean((price-ridge)^2))
+
+
+# predicción dentro de muestra (testing)
+pred_ridge_in <- predict(ridge , testing)
+
+# predicción fuera de muestra (en test)
+pred_ridge_out <- predict(ridge , test)
+
 
 # regularización ridge
 

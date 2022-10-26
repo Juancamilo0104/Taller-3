@@ -1,5 +1,8 @@
 ## MODELO ELASTIC NET
 
+library(pacman)
+p_load(tidyverse, fastDummies, caret, glmnet, MLmetrics)
+
 library("dplyr") 
 library("caret")
 
@@ -22,12 +25,21 @@ elasticnet <- train(modelo1,
                     preProcess = c("center", "scale")
 )
 
-##
-
 elasticnet
+
+# predicciones
+
+testing$elasticnet <- predict(elasticnet,newdata = testing)
+with(testing,mean((price-elasticnet)^2))
 
 test$elasticnet <- predict(elasticnet,newdata = test)
 with(test,mean((price-elasticnet)^2))
+
+# predicción dentro de muestra (testing)
+pred_elasticnet_in <- predict(elasticnet , testing)
+
+# predicción fuera de muestra (en test)
+pred_elasticnet_out <- predict(elasticnet , test)
 
 
 # regularización elasticnet
