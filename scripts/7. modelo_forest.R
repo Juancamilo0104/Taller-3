@@ -9,6 +9,8 @@ tunegrid_rf <- expand.grid(mtry = c(3, 5, 10),
                                              70, 100),
                            splitrule = "variance")
 
+# como la clase de Ignacio
+
 forest <- train(wage ~ .,
                  data = train_df, 
                  method = "ranger", 
@@ -19,6 +21,12 @@ forest <- train(wage ~ .,
 # Comando automático (a mi no me gusta)
 plot(forest)
 
+forest
 
+pred_rf <- predict(forest,testing)
+
+confusionMatrix(testing$Default,pred_rf)
+
+varImp(forest,scale=TRUE)
 
 

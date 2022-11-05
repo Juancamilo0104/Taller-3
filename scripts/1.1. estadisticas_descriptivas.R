@@ -95,7 +95,7 @@ box_plot3 <- box_plot3 +
 box_plot3
 
 
-
+# Estadísticas de las variables depuradas
 
 
 

@@ -13,7 +13,7 @@ library(h2o)
 # YO le voy a poner 10 nucleos porque los tengo. Si usted tiene menos o más, pues cambie el parámetro
 h2o.init(nthreads = 10)
 
-# Esta chimbada es bien demorada
+# Esta suele ser demorada
 set.seed(666)
 library(caret)
 modelo3 <- train(wage ~ .,
