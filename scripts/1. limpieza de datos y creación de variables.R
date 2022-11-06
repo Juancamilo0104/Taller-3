@@ -20,15 +20,26 @@ head(train)
 head(test)
 colnames(train)
 colnames(test)
+
+# ver los missing values 
+
 skim(train)
 skim(test)
 
 
-# tratamiento de datos de la descripción para sacar las variables 
+
+# tratamiento de datos de la descripción para sacar las variables. DESCRIPTION
+
+
+
+
+
+
+
 # IMPUTACIÓN DE DATOS
 
 
-# Base train
+## Base train
 
 # surface1
 
@@ -45,7 +56,7 @@ skim(test)
 # parqueadero
 
 
-# Base test
+## Base test
 
 # surface1
 
@@ -63,7 +74,7 @@ skim(test)
 
 
 
-# Crear variables con DATOS ESPACIALES
+## Crear variables con DATOS ESPACIALES
 
 # dista_park
 

@@ -5,6 +5,25 @@
 
 
 
+# complementaria
+
+
+# Cargar e instalar paquetes
+library(pacman)
+p_load(tidyverse, SuperLearner, caret, glmnet, randomForest, RhpcBLASctl, MLmetrics)
+
+# Ajustamos el CV del SuperLearner
+# Vamos a usar 3 folds por temas computacionales
+# pero deberíamos usar algo alrededor de 20.
+X_train2 <- data.frame(scale(X_train))
+set.seed(666)
+cv_sl = CV.SuperLearner(Y = y_train, X = X_train2, 
+                        family = binomial(), 
+                        cvControl = list(V = 10),
+                        SL.library = c("SL.mean", "SL.glmnet", "SL.rf.better", 
+                                       "SL.lm"),
+                        control = list(saveFitLibrary = T))
+summary(cv_sl)
 
 
 # clase Ignacio
