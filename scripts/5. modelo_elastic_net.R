@@ -25,6 +25,30 @@ elasticnet <- train(modelo1,
                     preProcess = c("center", "scale")
 )
 
+
+
+set.seed(123)
+lambda <- 10^seq(-2, 3, length = 100)
+
+elasticnet <- train(price ~ surface_total2 + bedrooms + bathrooms + distancia_parque + distancia_estacion_bus + distancia_hospital + distancia_estacion_policia, 
+               data = training11, 
+               method = "glmnet",
+               trControl = trainControl("cv", number = 5),
+               tuneGrid = expand.grid(alpha = 0.7, lambda=lambda), 
+               preProcess = c("center", "scale")
+)
+
+elasticnet
+
+summary(elasticnet)
+
+
+
+
+
+
+
+
 elasticnet
 
 # predicciones

@@ -6,16 +6,22 @@ p_load(tidyverse, fastDummies, caret, glmnet, MLmetrics)
 library("dplyr") 
 library("caret")
 
+training11 <- na.omit(training1)
+
 set.seed(123)
 lambda <- 10^seq(-2, 3, length = 100)
 
-lasso <- train(modelo1, 
-               data = training, 
+lasso <- train(price ~ surface_total2 + bedrooms + bathrooms + distancia_parque + distancia_estacion_bus + distancia_hospital + distancia_estacion_policia, 
+               data = training11, 
                method = "glmnet",
                trControl = trainControl("cv", number = 5),
                tuneGrid = expand.grid(alpha = 1, lambda=lambda), 
                preProcess = c("center", "scale")
 )
+
+
+
+###
 
 lasso
 

@@ -1,0 +1,29 @@
+> summary(ols)
+
+Call:
+lm(formula = price ~ surface_total2 + bedrooms + bathrooms + 
+    distancia_parque + distancia_estacion_bus + distancia_hospital + 
+    distancia_estacion_policia, data = training1, method = "lm", 
+    trControl = ctrl, preProcess = c("center", "scale"))
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-3.978e+09 -3.100e+08 -1.115e+08  1.382e+08  1.725e+10 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                -1.827e+08  1.998e+07  -9.144  < 2e-16 ***
+surface_total2              3.025e+01  8.862e+02   0.034    0.973    
+bedrooms                   -1.002e+08  5.378e+06 -18.628  < 2e-16 ***
+bathrooms                   4.732e+08  5.860e+06  80.749  < 2e-16 ***
+distancia_parque            2.964e+05  4.303e+04   6.888 5.88e-12 ***
+distancia_estacion_bus     -2.678e+03  7.511e+03  -0.357    0.721    
+distancia_hospital          4.916e+04  1.007e+04   4.881 1.07e-06 ***
+distancia_estacion_policia -9.944e+04  7.786e+03 -12.772  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 709900000 on 15422 degrees of freedom
+  (25720 observations deleted due to missingness)
+Multiple R-squared:  0.3375,	Adjusted R-squared:  0.3372 
+F-statistic:  1122 on 7 and 15422 DF,  p-value: < 2.2e-16
