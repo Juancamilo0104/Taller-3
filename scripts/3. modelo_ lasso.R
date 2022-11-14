@@ -19,23 +19,22 @@ lasso <- train(price ~ surface_total2 + bedrooms + bathrooms + distancia_parque 
                preProcess = c("center", "scale")
 )
 
+summary(lasso)
+
+
+lasso
 
 
 ###
 
 lasso
 
-# predicciones 
-
-testing$lasso <- predict(lasso,newdata = testing)
-with(testing,mean((price-lasso)^2))
-
-test$lasso <- predict(lasso,newdata = test)
-with(test,mean((price-lasso)^2))
-
 
 # predicción dentro de muestra (testing)
-pred_lasso_in <- predict(lasso , testing)
+pred_lasso_in <- predict(lasso , testing1)
+pred_lasso_in
+write.csv(pred_lasso_in)
+
 
 # predicción fuera de muestra (en test)
 pred_lasso_out <- predict(lasso , test)
